@@ -1,0 +1,16 @@
+const double SPLASH_TITLE_SIZE = 40;
+const double HOME_BTNS_TEXT_SIZE = 25;
+const double HOME_BTNS_BORDER_RADIUS = 18;
+const double GAME_IMG_SIZE = 90;
+const double GAME_IMG_LIST_PADDING = 8;
+const double GAME_ANSWERS_LIST_PADDING = 16;
+const double GAME_ANSWERS_TEXT_SIZE = 50;
+const double HOME_BTNS_SIDE_MARGIN = 64;
+const double HOME_UPPER_BTN_BOT_MARGIN = 16;
+const double HOME_LOWER_BTN_BOT_MARGIN = 128;
+const double LIST_VIEW_WIDTH = 100;
+const double LIST_VIEW_HEIGHT = 100;
+const double MATCHING_TITLE_TOP_MARG = 50;
+const double MATCHING_SCORE_TOP_MARG = 16;
+const double MATCHING_TITLE_SIZE = 25;
+const double GAME_ANSWER_TEXT_TOP_MARG = 32;
