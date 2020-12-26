@@ -45,12 +45,24 @@ class _MatchingGameViewState extends State<MatchingGameView> {
                         fontSize: MATCHING_TITLE_SIZE,
                         color: Colors.black)),
               ),
-              Expanded(child: Center(child: Container(child: Text(_gameController.answers[_answerIndex],
-                          style: TextStyle(
-                              fontFamily: FONT_FAMILY,
-                              fontSize: GAME_ANSWERS_TEXT_SIZE,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)), constraints: BoxConstraints(maxHeight: GAME_ANSWERS_TEXT_SIZE),),)),
+              Expanded(
+                  child: Center(
+                child: Container(
+                  child: Text(_gameController.answers[_answerIndex],
+                      style: TextStyle(
+                          fontFamily: FONT_FAMILY,
+                          fontSize: GAME_ANSWERS_TEXT_SIZE,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black)),
+                  constraints:
+                      BoxConstraints(maxHeight: GAME_ANSWERS_TEXT_SIZE),
+                ),
+              )),
+              Expanded(
+                child: Center(
+                  child: GameImagesList(),
+                ),
+              )
             ],
           )),
     );

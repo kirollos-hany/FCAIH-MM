@@ -17,12 +17,15 @@ class _GameImageListState extends State<GameImagesList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: _gameController.gameImages.length,
-      itemBuilder: _listBuilder,
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(GAME_IMG_LIST_PADDING),
+    return Container(
+      constraints: BoxConstraints(maxHeight: GAME_IMG_SIZE, maxWidth: GAME_IMG_SIZE),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: _gameController.gameImages.length,
+        itemBuilder: _listBuilder,
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(GAME_IMG_LIST_PADDING),
+      ),
     );
   }
 
