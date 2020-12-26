@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import '../controllers/matching_game_controller.dart';
 import '../constants/dimensions.dart';
 
-
 class GameImagesList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() =>
@@ -30,8 +29,8 @@ class _GameImageListState extends State<GameImagesList> {
   ListTile _listBuilder(BuildContext context, int index) {
     return ListTile(
         title: Draggable<int>(
-          data: index,
-      affinity: Axis.horizontal,
+      data: index,
+      affinity: Axis.vertical,
       feedback: Image(
           image: AssetImage(_gameController.gameImages[index].imgPath),
           width: GAME_IMG_SIZE,
