@@ -48,21 +48,20 @@ class _MatchingGameViewState extends State<MatchingGameView> {
               Expanded(
                   child: Center(
                 child: Container(
-                  child: Text(_gameController.answers[_answerIndex],
-                      style: TextStyle(
-                          fontFamily: FONT_FAMILY,
-                          fontSize: GAME_ANSWERS_TEXT_SIZE,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black)),
+                  child: DragTarget<int>(builder: (BuildContext context,
+                      List<dynamic> candiate, List<dynamic> rejected) {
+                    return Text(_gameController.answers[_answerIndex],
+                        style: TextStyle(
+                            fontFamily: FONT_FAMILY,
+                            fontSize: GAME_ANSWERS_TEXT_SIZE,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black));
+                  }),
                   constraints:
                       BoxConstraints(maxHeight: GAME_ANSWERS_TEXT_SIZE),
                 ),
               )),
-              Expanded(
-                child: Center(
-                  child: GameImagesList(),
-                ),
-              )
+              Container(child: GameImagesList(), width: 100, height: 100)
             ],
           )),
     );

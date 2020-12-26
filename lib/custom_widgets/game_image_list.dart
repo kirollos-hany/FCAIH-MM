@@ -31,7 +31,7 @@ class _GameImageListState extends State<GameImagesList> {
 
   ListTile _listBuilder(BuildContext context, int index) {
     return ListTile(
-        title: Draggable<int>(
+        title: Container(child:Draggable<int>(
       data: index,
       affinity: Axis.vertical,
       feedback: Image(
@@ -46,6 +46,6 @@ class _GameImageListState extends State<GameImagesList> {
           image: AssetImage(_gameController.gameImages[index].imgPath),
           width: GAME_IMG_SIZE,
           height: GAME_IMG_SIZE),
-    ));
+    ), width: GAME_IMG_SIZE, height: GAME_IMG_SIZE));
   }
 }
