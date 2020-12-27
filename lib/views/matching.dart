@@ -4,18 +4,31 @@ import '../custom_widgets/game_image_list.dart';
 import '../constants/strings.dart';
 import '../constants/dimensions.dart';
 import '../controllers/matching_game_controller.dart';
+import '../interfaces/on_correct_answer.dart';
 
 class MatchingGameView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MatchingGameViewState();
 }
 
-class _MatchingGameViewState extends State<MatchingGameView> {
-  String _gameHint = "قم بتوصيل الصورة \n المناسبة للحرف";
+class _MatchingGameViewState extends State<MatchingGameView>
+    implements OnCorrectAnswer {
+  final String _gameHint = "قم بتوصيل الصورة \n المناسبة للحرف";
   int _score = 0;
-  String _scoreText = "مجموع نقاطك";
+  final String _scoreText = "مجموع نقاطك";
   final MatchingGameController _gameController = MatchingGameController();
-  int _answerIndex = 0;
+  String _letterToShow;
+  GameImagesList _gameImagesList;
+  _MatchingGameViewState() {
+    _gameImagesList = GameImagesList(this);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _letterToShow = _gameController.letterToShow;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,23 +60,40 @@ class _MatchingGameViewState extends State<MatchingGameView> {
               ),
               Expanded(
                   child: Center(
-                child: Container(
-                  child: DragTarget<int>(builder: (BuildContext context,
-                      List<dynamic> candiate, List<dynamic> rejected) {
-                    return Text(_gameController.answers[_answerIndex],
-                        style: TextStyle(
-                            fontFamily: FONT_FAMILY,
-                            fontSize: GAME_ANSWERS_TEXT_SIZE,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black));
-                  }),
-                  constraints:
-                      BoxConstraints(maxHeight: GAME_ANSWERS_TEXT_SIZE),
-                ),
+                child: Row(children: [
+                  Container(
+                      child: DragTarget<int>(
+                        builder: (context, candidates, rejected) {
+                          return Text(_letterToShow,
+                              style: TextStyle(
+                                  fontFamily: FONT_FAMILY,
+                                  fontSize: GAME_ANSWERS_TEXT_SIZE,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black));
+                        },
+                        onWillAccept: (data) => true,
+                      ),
+                      margin: const EdgeInsets.only(left: 70)),
+                  Expanded(
+                    child: Row(children: [
+                      Container(
+                          child: _gameImagesList,
+                          height: MediaQuery.of(context).size.height / 2,
+                          width: MediaQuery.of(context).size.width / 2)
+                    ], mainAxisAlignment: MainAxisAlignment.end),
+                  )
+                ], mainAxisAlignment: MainAxisAlignment.start),
               )),
-              Container(child: GameImagesList(), width: 100, height: 100)
             ],
           )),
     );
+  }
+
+  @override
+  void onCorrectAnswer(int index) {
+    setState(() {
+      _score++;
+      _letterToShow = _gameController.letterToShow;
+    });
   }
 }

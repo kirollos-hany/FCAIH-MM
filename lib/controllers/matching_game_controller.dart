@@ -1,19 +1,25 @@
+import 'dart:math';
+
 import '../models/gameimage.dart';
 
 class MatchingGameController {
   List<GameImage> _gameImages;
   List<String> _answers;
+  String _letterToShow;
+  List<GameImage> _currentGameImages;
   static final MatchingGameController singleton = MatchingGameController._();
 
   factory MatchingGameController() => singleton;
 
+  List<GameImage> get currentGameImages => _currentGameImages;
+  String get letterToShow => _letterToShow;
+
   MatchingGameController._() {
     _initGameAnswers();
     _initGameImages();
+    updateCurrentGameState();
+    updateLetterToShow();
   }
-
-  List<GameImage> get gameImages => _gameImages;
-  List<String> get answers => _answers;
 
   void _initGameImages() {
     _gameImages = [];
@@ -213,7 +219,7 @@ class MatchingGameController {
         GameImage("assets/images/ع/grape.png", "عنب", _answers[answersIndex]);
     _gameImages.add(grapeGameImage);
     GameImage honeyGameImage =
-        GameImage("assets/Images/ع/grape.png", "عسل", _answers[answersIndex]);
+        GameImage("assets/images/ع/honey.png", "عسل", _answers[answersIndex]);
     _gameImages.add(honeyGameImage);
 
     //7arf l غ
@@ -359,6 +365,35 @@ class MatchingGameController {
     _answers.add("ي");
   }
 
-  bool isChoiceCorrect(int choiceIndex, int answerIndex) =>
-      _gameImages[choiceIndex].answer == _answers[answerIndex] ? true : false;
+  bool isChoiceCorrect(int choiceIndex, String answer) =>
+      _currentGameImages[choiceIndex].answer == answer ? true : false;
+
+  void removeGameImage(int index) =>
+      _gameImages.remove(_currentGameImages[index]);
+
+  void updateCurrentGameState() {
+    List<GameImage> temp = [];
+    bool flag = true;
+    int numOfImgsAdded = 0;
+    Random random = Random();
+    int i = 0;
+    while (flag && i < _gameImages.length) {
+      int randomIndex = random.nextInt(_gameImages.length);
+      if (i == 0) {
+        temp.add(_gameImages[randomIndex]);
+        numOfImgsAdded++;
+      } else if (temp[i - 1].answer != _gameImages[randomIndex].answer) {
+        temp.add(_gameImages[randomIndex]);
+        numOfImgsAdded++;
+      }
+      i++;
+      if (numOfImgsAdded == 3) flag = false;
+    }
+    _currentGameImages = temp;
+  }
+
+  void updateLetterToShow() => _letterToShow =
+      _currentGameImages[Random().nextInt(_currentGameImages.length)].answer;
+
+  String getImgDesc(int chosenIndex) => _currentGameImages[chosenIndex].imgDesc;
 }
