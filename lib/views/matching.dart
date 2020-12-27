@@ -1,4 +1,5 @@
 import 'package:audioplayers/audio_cache.dart';
+import 'package:fcaih_mm/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../custom_widgets/game_image_list.dart';
@@ -97,7 +98,30 @@ class _MatchingGameViewState extends State<MatchingGameView>
       _score++;
       _letterToShow = _gameController.letterToShow;
     });
-    if (_score == 5) _playApplauseSound();
+    if (_score == _gameController.numOfPlays) {
+      _playApplauseSound();
+      _showCongratsDialog();
+    }
+  }
+
+  void _showCongratsDialog() {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(
+                CONGRATS_TEXT,
+                style: TextStyle(fontFamily: FONT_FAMILY, fontSize: 20),
+              ),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                    child: Text("انهاء"))
+              ],
+            ));
   }
 
   void _playApplauseSound() => _assetsAudioPlayer.play(APPLAUSE_SOUND);

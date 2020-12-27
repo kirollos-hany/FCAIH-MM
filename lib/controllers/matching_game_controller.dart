@@ -13,6 +13,9 @@ class MatchingGameController {
 
   List<GameImage> get currentGameImages => _currentGameImages;
   String get letterToShow => _letterToShow;
+  final int _numOfPlays = 84;
+
+  int get numOfPlays => _numOfPlays;
 
   MatchingGameController._() {
     _initGameAnswers();

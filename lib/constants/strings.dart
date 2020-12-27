@@ -13,3 +13,5 @@ const String MATCHING_BG_IMG = "assets/images/bgmatching.png";
 const String CORRECT_ANS_SOUND = "audios/correct_answer.mp3";
 const String WRONG_ANS_SOUND = "audios/wrong_answer.mp3";
 const String APPLAUSE_SOUND = "audios/applause.mp3";
+
+const String CONGRATS_TEXT = "تهانينا لقد اتمتت اللعبة بنجاح";
