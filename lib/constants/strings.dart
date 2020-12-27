@@ -9,3 +9,7 @@ const String SPLASH_WELCOME_TITLE = "تعلم اللغة العربية";
 const String SPLASH_BG_IMG = "assets/images/splashscreen.png";
 
 const String MATCHING_BG_IMG = "assets/images/bgmatching.png";
+
+const String CORRECT_ANS_SOUND = "audios/correct_answer.mp3";
+const String WRONG_ANS_SOUND = "audios/wrong_answer.mp3";
+const String APPLAUSE_SOUND = "audios/applause.mp3";

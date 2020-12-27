@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../custom_widgets/game_image_list.dart';
@@ -19,6 +20,7 @@ class _MatchingGameViewState extends State<MatchingGameView>
   final MatchingGameController _gameController = MatchingGameController();
   String _letterToShow;
   GameImagesList _gameImagesList;
+  final AudioCache _assetsAudioPlayer = AudioCache();
   _MatchingGameViewState() {
     _gameImagesList = GameImagesList(this);
   }
@@ -95,5 +97,8 @@ class _MatchingGameViewState extends State<MatchingGameView>
       _score++;
       _letterToShow = _gameController.letterToShow;
     });
+    if (_score == 5) _playApplauseSound();
   }
+
+  void _playApplauseSound() => _assetsAudioPlayer.play(APPLAUSE_SOUND);
 }

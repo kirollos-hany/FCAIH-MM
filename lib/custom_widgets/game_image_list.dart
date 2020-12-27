@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -24,11 +26,18 @@ class _GameImageListState extends State<GameImagesList> {
 
   OnCorrectAnswer _onCorrectAnswerCallback;
 
+  final AudioCache _assetsAudioPlayer = AudioCache();
+
   @override
   void initState() {
     super.initState();
     _currentGameImages = _gameController.currentGameImages;
   }
+
+  void _playCorrectAnsSound() =>
+      _assetsAudioPlayer.play(CORRECT_ANS_SOUND);
+
+  void _playWrongAnsSound() => _assetsAudioPlayer.play(WRONG_ANS_SOUND);
 
   void _showCorrectAnswerSnackBar(int index) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -49,6 +58,7 @@ class _GameImageListState extends State<GameImagesList> {
   }
 
   void _onCorrectAnswer(int index) {
+    _playCorrectAnsSound();
     _showCorrectAnswerSnackBar(index);
     _gameController.removeGameImage(index);
     _gameController.updateCurrentGameState();
@@ -80,6 +90,7 @@ class _GameImageListState extends State<GameImagesList> {
               index, _gameController.letterToShow)) {
             _onCorrectAnswer(index);
           } else {
+            _playWrongAnsSound();
             _showWrongAnswerSnackBar(index);
           }
         },

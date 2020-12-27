@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../custom_widgets/button.dart';
 import '../constants/dimensions.dart';
 import '../constants/strings.dart';
+import 'matching.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomePageState();
@@ -27,7 +28,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    child: OrangeButton(MATCHING_GAME_TITLE, _onBtnPressed),
+                    child: OrangeButton(
+                        MATCHING_GAME_TITLE, _onMatchingGameBtnPressed),
                     margin: EdgeInsets.only(
                         left: HOME_BTNS_SIDE_MARGIN,
                         bottom: HOME_UPPER_BTN_BOT_MARGIN,
@@ -35,8 +37,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    child:
-                        OrangeButton(LEARN_ALPHABETS_GAME_TITLE, _onBtnPressed),
+                    child: OrangeButton(
+                        LEARN_ALPHABETS_GAME_TITLE, _onLearnAlphaBtnPressed),
                     margin: EdgeInsets.only(
                         left: HOME_BTNS_SIDE_MARGIN,
                         bottom: HOME_LOWER_BTN_BOT_MARGIN,
@@ -49,7 +51,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _onBtnPressed() {
-    return;
+  void _onMatchingGameBtnPressed() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MatchingGameView()));
   }
+
+  void _onLearnAlphaBtnPressed() {}
 }
