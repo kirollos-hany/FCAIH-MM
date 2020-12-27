@@ -12,3 +12,5 @@ const double MATCHING_TITLE_TOP_MARG = 50;
 const double MATCHING_SCORE_TOP_MARG = 16;
 const double MATCHING_TITLE_SIZE = 25;
 const double GAME_ANSWER_TEXT_TOP_MARG = 32;
+const double GAME_OVER_DIALOG_TEXT_SIZE = 30;
+const double ANSWER_LEFT_MARG = 70;

@@ -15,3 +15,5 @@ const String WRONG_ANS_SOUND = "audios/wrong_answer.mp3";
 const String APPLAUSE_SOUND = "audios/applause.mp3";
 
 const String CONGRATS_TEXT = "تهانينا لقد اتمتت اللعبة بنجاح";
+
+const String FINISH_GAME_TEXT = "انهاء";

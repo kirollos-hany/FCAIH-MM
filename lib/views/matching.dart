@@ -76,7 +76,7 @@ class _MatchingGameViewState extends State<MatchingGameView>
                         },
                         onWillAccept: (data) => true,
                       ),
-                      margin: const EdgeInsets.only(left: 70)),
+                      margin: const EdgeInsets.only(left: ANSWER_LEFT_MARG)),
                   Expanded(
                     child: Row(children: [
                       Container(
@@ -110,7 +110,7 @@ class _MatchingGameViewState extends State<MatchingGameView>
         builder: (context) => AlertDialog(
               title: Text(
                 CONGRATS_TEXT,
-                style: TextStyle(fontFamily: FONT_FAMILY, fontSize: 20),
+                style: TextStyle(fontFamily: FONT_FAMILY, fontSize: GAME_OVER_DIALOG_TEXT_SIZE),
               ),
               actions: [
                 FlatButton(
@@ -119,7 +119,7 @@ class _MatchingGameViewState extends State<MatchingGameView>
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
-                    child: Text("انهاء"))
+                    child: Text(FINISH_GAME_TEXT))
               ],
             ));
   }
