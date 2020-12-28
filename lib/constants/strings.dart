@@ -10,6 +10,11 @@ const String SPLASH_BG_IMG = "assets/images/splashscreen.png";
 
 const String MATCHING_BG_IMG = "assets/images/bgmatching.png";
 
+const String LEFT_ARROW_ICON = "assets/images/left_arrow.png";
+const String RIGHT_ARROW_ICON = "assets/images/right_arrow.png";
+
+const String BACK_ARROW_ICON = "assets/images/back_arrow.png";
+
 const String CORRECT_ANS_SOUND = "audios/correct_answer.mp3";
 const String WRONG_ANS_SOUND = "audios/wrong_answer.mp3";
 const String APPLAUSE_SOUND = "audios/applause.mp3";

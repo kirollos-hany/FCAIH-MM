@@ -4,6 +4,7 @@ import '../custom_widgets/button.dart';
 import '../constants/dimensions.dart';
 import '../constants/strings.dart';
 import 'matching.dart';
+import 'learn_alphabets_view.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,5 +57,8 @@ class _HomePageState extends State<HomePage> {
         context, MaterialPageRoute(builder: (context) => MatchingGameView()));
   }
 
-  void _onLearnAlphaBtnPressed() {}
+  void _onLearnAlphaBtnPressed() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LearnAlphabetsView()));
+  }
 }

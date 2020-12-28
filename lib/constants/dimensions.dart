@@ -14,3 +14,6 @@ const double MATCHING_TITLE_SIZE = 25;
 const double GAME_ANSWER_TEXT_TOP_MARG = 32;
 const double GAME_OVER_DIALOG_TEXT_SIZE = 30;
 const double ANSWER_LEFT_MARG = 70;
+const double BACK_ARROW_LEFT_MARG_MATCHING = 8;
+const double BACK_ARROW_ICON_SIZE = 100;
+const double MATCHING_SCORE_LEFT_MARG = 12;

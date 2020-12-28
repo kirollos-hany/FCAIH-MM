@@ -7,6 +7,7 @@ import '../constants/strings.dart';
 import '../constants/dimensions.dart';
 import '../controllers/matching_game_controller.dart';
 import '../interfaces/on_correct_answer.dart';
+import 'home.dart';
 
 class MatchingGameView extends StatefulWidget {
   @override
@@ -46,14 +47,37 @@ class _MatchingGameViewState extends State<MatchingGameView>
               Container(
                 margin: const EdgeInsets.only(top: MATCHING_TITLE_TOP_MARG),
                 alignment: Alignment.center,
-                child: Text(_gameHint,
-                    style: TextStyle(
-                        fontFamily: FONT_FAMILY,
-                        fontSize: MATCHING_TITLE_SIZE,
-                        color: Colors.black)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: BACK_ARROW_LEFT_MARG_MATCHING),
+                      child: IconButton(
+                          onPressed: _onBackBtnPressed,
+                          icon: Image(
+                            image: AssetImage(BACK_ARROW_ICON),
+                            width: BACK_ARROW_ICON_SIZE,
+                            height: BACK_ARROW_ICON_SIZE,
+                          )),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Text(_gameHint,
+                              style: TextStyle(
+                                  fontFamily: FONT_FAMILY,
+                                  fontSize: MATCHING_TITLE_SIZE,
+                                  color: Colors.black))
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.start,
+                ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: MATCHING_SCORE_TOP_MARG),
+                margin: const EdgeInsets.only(
+                    top: MATCHING_SCORE_TOP_MARG, left: MATCHING_SCORE_LEFT_MARG),
                 alignment: Alignment.center,
                 child: Text(_scoreText + " : $_score",
                     style: TextStyle(
@@ -104,13 +128,21 @@ class _MatchingGameViewState extends State<MatchingGameView>
     }
   }
 
+  void _onBackBtnPressed() {
+    Navigator.pop(context);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomePage()));
+  }
+
   void _showCongratsDialog() {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
               title: Text(
                 CONGRATS_TEXT,
-                style: TextStyle(fontFamily: FONT_FAMILY, fontSize: GAME_OVER_DIALOG_TEXT_SIZE),
+                style: TextStyle(
+                    fontFamily: FONT_FAMILY,
+                    fontSize: GAME_OVER_DIALOG_TEXT_SIZE),
               ),
               actions: [
                 FlatButton(

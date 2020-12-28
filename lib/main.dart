@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'views/splash.dart';
 import './constants/strings.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
